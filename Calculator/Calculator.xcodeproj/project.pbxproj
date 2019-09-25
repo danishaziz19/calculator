@@ -12,6 +12,7 @@
 		1C461BF7233AFCBA00CC59D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BF5233AFCBA00CC59D0 /* Main.storyboard */; };
 		1C461BF9233AFCBD00CC59D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BF8233AFCBD00CC59D0 /* Assets.xcassets */; };
 		1C461BFC233AFCBD00CC59D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BFA233AFCBD00CC59D0 /* LaunchScreen.storyboard */; };
+		1C461C05233B367100CC59D0 /* MathExpressionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1C461BF8233AFCBD00CC59D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C461BFB233AFCBD00CC59D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C461BFD233AFCBD00CC59D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		1C461BF0233AFCB900CC59D0 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				1C461C03233B2EAB00CC59D0 /* ViewModel */,
 				1C461BF1233AFCB900CC59D0 /* AppDelegate.swift */,
 				1C461BF3233AFCB900CC59D0 /* ViewController.swift */,
 				1C461BF5233AFCBA00CC59D0 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				1C461BFD233AFCBD00CC59D0 /* Info.plist */,
 			);
 			path = Calculator;
+			sourceTree = "<group>";
+		};
+		1C461C03233B2EAB00CC59D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C461BF4233AFCB900CC59D0 /* ViewController.swift in Sources */,
+				1C461C05233B367100CC59D0 /* MathExpressionViewModel.swift in Sources */,
 				1C461BF2233AFCB900CC59D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
