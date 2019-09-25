@@ -61,7 +61,7 @@ class MathExpressionViewModel: NSObject {
                 return ""
             }
             let calculatedValue = self.calculateExpression(expression: cleanExpression)
-            return calculatedValue
+            return getResult(value: calculatedValue)
         }
         return expression
     }
@@ -138,5 +138,13 @@ class MathExpressionViewModel: NSObject {
     
     func clearAll() {
         self.expressionArray.removeAll()
+    }
+    
+    func getResult(value: String) -> String {
+        let values = value.components(separatedBy: ".")
+        if let number = Int(values.last ?? "0"), number <= 0 {
+           return "\((value as NSString).integerValue)"
+        }
+        return value
     }
 }
