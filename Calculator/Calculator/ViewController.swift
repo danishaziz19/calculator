@@ -33,25 +33,23 @@ class ViewController: UIViewController {
     
     @IBAction func pressOperationButton(_ sender: UIButton) {
         if let buttonText = sender.titleLabel?.text {
-            if let expression = lblExpression.text {
-                if !self.viewModel.isLastDigitIsOperation(expression: expression) {
-                    self.viewModel.saveExpress(digit: buttonText, isNumber: false)
-                    self.setExpresionLabel(doCalculation: false)
-                }
+            if !self.viewModel.isLastDigitIsOperation(expression: self.viewModel.expression) {
+                self.viewModel.saveExpress(digit: buttonText, isNumber: false)
+                self.setExpresionLabel(doCalculation: false)
             }
         }
     }
     
     @IBAction func pressRemoveButton(_ sender: UIButton) {
-        if let expression = self.lblExpression.text {
-            lblExpression.text = self.viewModel.removeLastDigit(expression: expression)
-        }
+        self.viewModel.removeLastDigit()
+        self.setExpresionLabel(doCalculation: true)
     }
     
     @IBAction func pressPointButton(_ sender: UIButton) {
          if let buttonText = sender.titleLabel?.text {
             if !self.viewModel.isLastDigitIsPoint() {
                 self.viewModel.saveExpress(digit: buttonText)
+                self.setExpresionLabel(doCalculation: true)
             }
         }
     }
@@ -63,12 +61,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pressEqual(_ sender: UIButton) {
-        if let expression = self.lblExpression.text, !expression.isEmpty {
-            if !self.viewModel.isLastDigitIsOperation(expression: expression) {
-                lblResult.text = self.viewModel.calculate()
-                lblExpression.text = ""
-                self.viewModel.clearAll()
-            }
+        if !self.viewModel.isLastDigitIsOperation(expression: self.viewModel.expression) {
+            lblResult.text = self.viewModel.calculate()
+            lblExpression.text = ""
+            self.viewModel.clearAll()
         }
     }
 

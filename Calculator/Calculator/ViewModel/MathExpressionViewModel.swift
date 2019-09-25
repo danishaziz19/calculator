@@ -10,7 +10,7 @@ import UIKit
 
 class MathExpressionViewModel: NSObject {
 
-    let operation: [String] = ["+", "-", "*", "/", "X"]
+    let operation: [String] = ["+", "-", "*", "/", "X", "%"]
     let point: String = "."
     var expressionArray: [String] = []
     
@@ -23,14 +23,14 @@ class MathExpressionViewModel: NSObject {
     }
     
     func saveExpress(digit: String, isNumber: Bool = true) {
-    
+        
         if isValueIsOperation(value: digit) {
             expressionArray.append(digit)
             return
         }
         
-        if let txt = expressionArray.last, !isLastDigitIsOperation(expression: txt) {
-            if !txt.contains(point) {
+        if let lastNumbers = expressionArray.last, !isLastDigitIsOperation(expression: lastNumbers) {
+            if !lastNumbers.contains(point) || !digit.elementsEqual(point) {
                 expressionArray[expressionArray.count - 1] += digit
             }
         } else {
@@ -66,20 +66,19 @@ class MathExpressionViewModel: NSObject {
         return expression
     }
     
-    func removeLastDigit(expression: String) -> String {
+    func removeLastDigit() {
         if let value = expressionArray.last {
             expressionArray[expressionArray.count - 1] = String(value.dropLast())
             if expressionArray[expressionArray.count - 1].isEmpty {
                 expressionArray.removeLast()
             }
         }
-        
-        return getExpressionText()
     }
     
     func removeIfLastDigitIsOperation(expression: String) -> String {
         if operation.contains(String(expression.dropLast())) {
-            return removeLastDigit(expression: expression)
+            self.removeLastDigit()
+            return self.expressionText
         }
         return expression
     }
@@ -111,7 +110,11 @@ class MathExpressionViewModel: NSObject {
         var expression = ""
         for value in expressionArray {
             if isValueIsOperation(value: value) {
-                expression += value
+                if value.elementsEqual("%") {
+                     expression += "/100 *"
+                } else {
+                     expression += value
+                }
             } else {
                 if let digits = Double(value) {
                     expression += String(digits)
