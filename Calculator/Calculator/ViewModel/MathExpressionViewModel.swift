@@ -11,17 +11,30 @@ import UIKit
 class MathExpressionViewModel: NSObject {
 
     let operation: [String] = ["+", "-", "*", "/", "X"]
-    var expression: String = ""
-    var expressionText: String = ""
-    var expresssionResult: String = ""
+    let point: String = "."
+    var expressionArray: [String] = []
+    
+    var expressionText: String {
+        return getExpressionText()
+    }
+    
+    var expression: String {
+        return getExpression()
+    }
     
     func saveExpress(digit: String, isNumber: Bool = true) {
-        if isNumber {
-            if let number = Double(digit) {
-                self.expresssionResult += ("" + String(number))
+    
+        if isValueIsOperation(value: digit) {
+            expressionArray.append(digit)
+            return
+        }
+        
+        if let txt = expressionArray.last, !isLastDigitIsOperation(expression: txt) {
+            if !txt.contains(point) {
+                expressionArray[expressionArray.count - 1] += digit
             }
         } else {
-             self.expresssionResult += (" " + digit + " ")
+            expressionArray.append(digit)
         }
     }
     
@@ -40,21 +53,28 @@ class MathExpressionViewModel: NSObject {
         return cleanExpression
     }
     
-    func calculate(expression: String) -> String {
-        let cleanExpression = self.cleanExpression(expression: expression)
-        guard cleanExpression.count > 0 else {
-          return ""
+    func calculate() -> String {
+        let expression = getExpression()
+        if !expression.isEmpty {
+            let cleanExpression = self.cleanExpression(expression: expression)
+            guard !cleanExpression.isEmpty && !self.isLastDigitIsOperation(expression: cleanExpression) else {
+                return ""
+            }
+            let calculatedValue = self.calculateExpression(expression: cleanExpression)
+            return calculatedValue
         }
-        let calculatedValue = self.calculateExpression(expression: cleanExpression)
-        return calculatedValue
-        
+        return expression
     }
     
     func removeLastDigit(expression: String) -> String {
-        if expression.count > 0 {
-             return String(expression.dropLast())
+        if let value = expressionArray.last {
+            expressionArray[expressionArray.count - 1] = String(value.dropLast())
+            if expressionArray[expressionArray.count - 1].isEmpty {
+                expressionArray.removeLast()
+            }
         }
-        return ""
+        
+        return getExpressionText()
     }
     
     func removeIfLastDigitIsOperation(expression: String) -> String {
@@ -71,5 +91,49 @@ class MathExpressionViewModel: NSObject {
             return operation.contains(String(lastDigit))
         }
         return true
+    }
+    
+    func isValueIsOperation(value: String) -> Bool {
+        return operation.contains(value)
+    }
+    
+    func isLastDigitIsPoint() -> Bool {
+        let expression = getExpressionText()
+        var cleanExp = cleanExpression(expression: expression)
+        if !cleanExp.isEmpty {
+            let lastDigit = cleanExp.removeLast()
+            return self.point.elementsEqual(String(lastDigit))
+        }
+        return true
+    }
+    
+    func getExpression() -> String {
+        var expression = ""
+        for value in expressionArray {
+            if isValueIsOperation(value: value) {
+                expression += value
+            } else {
+                if let digits = Double(value) {
+                    expression += String(digits)
+                }
+            }
+        }
+        return expression
+    }
+    
+    func getExpressionText() -> String {
+        var expression = ""
+        for value in expressionArray {
+            if isValueIsOperation(value: value) {
+                expression += String(format: " %@", value)
+            } else {
+                expression += String(format: " %@", value)
+            }
+        }
+        return expression
+    }
+    
+    func clearAll() {
+        self.expressionArray.removeAll()
     }
 }
