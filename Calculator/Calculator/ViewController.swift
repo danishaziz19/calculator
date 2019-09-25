@@ -18,6 +18,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.setup()
+    }
+    
+    func setup() {
+        if DeviceConfig().isIPad() {
+            lblExpression.font = lblExpression.font.withSize(50)
+            lblResult.font = lblResult.font.withSize(66)
+        }
     }
 
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
