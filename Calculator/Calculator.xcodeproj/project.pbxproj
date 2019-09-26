@@ -12,7 +12,7 @@
 		1C461BF7233AFCBA00CC59D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BF5233AFCBA00CC59D0 /* Main.storyboard */; };
 		1C461BF9233AFCBD00CC59D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BF8233AFCBD00CC59D0 /* Assets.xcassets */; };
 		1C461BFC233AFCBD00CC59D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C461BFA233AFCBD00CC59D0 /* LaunchScreen.storyboard */; };
-		1C461C05233B367100CC59D0 /* MathExpressionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */; };
+		1C461C05233B367100CC59D0 /* MathExpressionLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C461C04233B367100CC59D0 /* MathExpressionLogicController.swift */; };
 		1C461C08233B955C00CC59D0 /* DeviceConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C461C07233B955C00CC59D0 /* DeviceConfig.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		1C461BF8233AFCBD00CC59D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C461BFB233AFCBD00CC59D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C461BFD233AFCBD00CC59D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionViewModel.swift; sourceTree = "<group>"; };
+		1C461C04233B367100CC59D0 /* MathExpressionLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExpressionLogicController.swift; sourceTree = "<group>"; };
 		1C461C07233B955C00CC59D0 /* DeviceConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				1C461C06233B954900CC59D0 /* Config */,
-				1C461C03233B2EAB00CC59D0 /* ViewModel */,
+				1C461C03233B2EAB00CC59D0 /* LogicController */,
 				1C461BF1233AFCB900CC59D0 /* AppDelegate.swift */,
 				1C461BF3233AFCB900CC59D0 /* ViewController.swift */,
 				1C461BF5233AFCBA00CC59D0 /* Main.storyboard */,
@@ -70,12 +70,12 @@
 			path = Calculator;
 			sourceTree = "<group>";
 		};
-		1C461C03233B2EAB00CC59D0 /* ViewModel */ = {
+		1C461C03233B2EAB00CC59D0 /* LogicController */ = {
 			isa = PBXGroup;
 			children = (
-				1C461C04233B367100CC59D0 /* MathExpressionViewModel.swift */,
+				1C461C04233B367100CC59D0 /* MathExpressionLogicController.swift */,
 			);
-			path = ViewModel;
+			path = LogicController;
 			sourceTree = "<group>";
 		};
 		1C461C06233B954900CC59D0 /* Config */ = {
@@ -158,7 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C461BF4233AFCB900CC59D0 /* ViewController.swift in Sources */,
-				1C461C05233B367100CC59D0 /* MathExpressionViewModel.swift in Sources */,
+				1C461C05233B367100CC59D0 /* MathExpressionLogicController.swift in Sources */,
 				1C461BF2233AFCB900CC59D0 /* AppDelegate.swift in Sources */,
 				1C461C08233B955C00CC59D0 /* DeviceConfig.swift in Sources */,
 			);

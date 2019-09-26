@@ -1,5 +1,5 @@
 //
-//  MathExpressionViewModel.swift
+//  MathExpressionLogicController.swift
 //  Calculator
 //
 //  Created by Danish Aziz on 25/9/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MathExpressionViewModel: NSObject {
+class MathExpressionLogicController: NSObject {
 
     let operation: [String] = ["+", "-", "*", "/", "X", "%"]
     let point: String = "."

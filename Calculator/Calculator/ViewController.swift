@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblExpression: UILabel!
     @IBOutlet weak var lblResult: UILabel!
     
-    let viewModel: MathExpressionViewModel = MathExpressionViewModel()
+    let viewModel: MathExpressionLogicController = MathExpressionLogicController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
